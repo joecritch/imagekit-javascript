@@ -26,6 +26,8 @@ function request (formData, defaultOptions, callback) {
 function _generateSignatureToken(defaultOptions, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', defaultOptions.authenticationEndpoint);
+    xhr.withCredentials = true;
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         if (xhr.status === 200) {
             try {
